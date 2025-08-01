@@ -15,18 +15,13 @@ app.get("/users", (req, res) => {
     });
 })
 
-app.post("/user", (req, res) => {
-  const { username, password } = req.body;
-  
-  if (!username || !password) {
-    res.status(400).json({ error: "Username and password are required" });
-    return
-  }
+app.post("/createUser", (req, res) => {
+
 
   prismaClient.user.create({
     data: {
-      username,
-      password
+      username : Math.random().toString(),
+      password : Math.random().toString()
     }
   })
     .then(user => {
@@ -36,5 +31,9 @@ app.post("/user", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 })
+
+app.get("/", (req, res) => {
+  res.send("Hello from backend!");
+});
 
 app.listen(8080);
