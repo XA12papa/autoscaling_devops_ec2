@@ -7,10 +7,12 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "db:generate": "cd packages/db && npx prisma generate && cd ../..",
-    "start:web": "cd apps/web && bun run start",
+    "db:generate": "cd packages/db && bunx prisma generate && cd ../..",
+    "install:openssl" : "bun install openssl",
     "start:backend": "cd apps/backend && bun run index.ts",
-    "start:websocket": "cd apps/websocket && bun run index.ts"
+    "start:websocket": "cd apps/websocket && bun run index.ts",
+    "start:web": "cd apps/web && bun run start"
+  
   },
   "devDependencies": {
     "prettier": "^3.5.0",
