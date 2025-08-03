@@ -27,7 +27,7 @@ jobs :
             tags : bideshmukhi/backend:${{ github.sha }}
             build-args : |
              DATABASE_URL=${{ secrets.DATABASE_URL }}
-         - run : |
+        - run : |
               echo "Deploying backend to ec2 machine"
               echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
               mkdir ~/.ssh
