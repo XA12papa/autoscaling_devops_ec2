@@ -33,4 +33,4 @@ jobs :
               mkdir ~/.ssh
               echo "${{ secrets.KNOWN_HOST }}" &> ~/.ssh/known_hosts
               chmod 700 /home/runner/ssh_key
-              ssh  -i ~/ssh_key ubuntu@ec2-3-86-193-29.compute-1.amazonaws.com  " docker stop backend &&   docker rmi $(docker images -a -q) && docker pull bideshmukhi/backend:${{ github.sha }} && docker run -d -p 8080:8080 --name backend  bideshmukhi/backend:${{ github.sha }}"
+              ssh  -i ~/ssh_key ubuntu@ec2-34-227-27-210.compute-1.amazonaws.com  " docker stop backend &&   docker rmi $(docker images -a -q) && docker pull bideshmukhi/backend:${{ github.sha }} && docker run -d -p 8080:8080 --name backend  bideshmukhi/backend:${{ github.sha }}"
