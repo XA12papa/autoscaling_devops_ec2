@@ -28,5 +28,6 @@ jobs :
         - run : |
               echo "Deploying backend to ec2 machine"
               echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
+              echo "${{ secrets.KNOWN_HOST }}" &> ~/.ssh/known_hosts
               chmod 700 ~/ssh_key
               ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@ec2-3-86-193-29.compute-1.amazonaws.com  "docker stop backend && docker run --name backend -d -p 3000:3000 XA12papa/backend:${{ github.sha }}"
