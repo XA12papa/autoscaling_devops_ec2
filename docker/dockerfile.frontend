@@ -1,5 +1,8 @@
 FROM oven/bun:1
 
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
+
 WORKDIR /user/src/app
 
 COPY ./package.json ./package.json
@@ -15,7 +18,7 @@ RUN apt-get update && apt-get install -y openssl
 RUN bun run  db:generate
 RUN bun run build
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["bun","run", "start:web"]
 
