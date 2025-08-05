@@ -24,7 +24,7 @@ jobs :
             context : .
             file : ./docker/dockerfile.backend
             push : true
-            tags : bideshmukhi/backend:${{ github.sha }}
+            tags : bideshmukhi/autoscaling_backend:${{ github.sha }}
             build-args : |
              DATABASE_URL=${{ secrets.DATABASE_URL }}
         - run : |
