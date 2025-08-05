@@ -33,7 +33,7 @@ app.post("/createUser", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-  res.send("Hello from backend v3 --> for checking purpose!");
+  res.send("Hello from backend v4 --> enjoy!");
 });
 
 app.listen(8080);
