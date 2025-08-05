@@ -33,4 +33,4 @@ jobs :
               mkdir ~/.ssh
               echo "${{ secrets.KNOWN_HOST }}" &> ~/.ssh/known_hosts
               chmod 700 /home/runner/ssh_key
-              ssh  -i ~/ssh_key ubuntu@${{ secrets.SSH_HOST }}  " docker rm -f $(docker ps -aq) && docker rmi -f $(docker images -aq) && docker pull bideshmukhi/backend:${{ github.sha }} && docker run -d -p 8080:8080 --name backend  bideshmukhi/backend:${{ github.sha }}"
+              ssh  -i ~/ssh_key ubuntu@$"{{ secrets.SSH_HOST }}"  " docker rm -f $(docker ps -aq) && docker rmi -f $(docker images -aq) && docker pull bideshmukhi/backend:${{ github.sha }} && docker run -d -p 8080:8080 --name backend  bideshmukhi/backend:${{ github.sha }}"
