@@ -39,6 +39,5 @@ jobs :
               docker pull bideshmukhi/autoscaling_backend:${{ github.sha }} &&
               docker run -d -p 8080:8080 --name backend  bideshmukhi/autoscaling_backend:${{ github.sha }} &&
               RUNNING_IMG=$(docker ps --format '{{.Image}}' | uniq) || true &&
-              docker image rm -f $(docker images -a | grep -v "your_image" | awk 'NR>1 {print $3}') || true
-              "
-"
+              docker image rm -f $(docker images -a | grep -v "your_image" | awk 'NR>1 {print $3}') || true"
+
