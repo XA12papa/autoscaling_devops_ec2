@@ -43,16 +43,4 @@ jobs :
               docker run -d -p 8080:8080 --name backend  bideshmukhi/autoscaling_backend:${{ github.sha }} 
               "
 
-    delete_previous_images:
-      runs-on : ubuntu-latest
-      needs : build-backend
-      steps :
-        - name : delete previous images
-        - run : |
-              echo "deleting previous images"
-              echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
-              mkdir ~/.ssh
-              echo "${{ secrets.KNOWN_HOST }}" &> ~/.ssh/known_hosts
-              chmod 700 /home/runner/ssh_key
-              ssh  -i ~/ssh_key ubuntu@ec2-34-230-52-123.compute-1.amazonaws.com  " 
-              docker rmi -f $(docker images -a | grep -v "your_image" | awk 'NR>1 {print $3}') || true "
+   
