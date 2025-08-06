@@ -44,8 +44,8 @@ jobs :
               "
 
     delete_previous_images:
+      needs : [build-backend]
       runs-on : ubuntu-latest
-      needs :[build-backend]
       steps :
         - name : delete previous images
         - run : |
@@ -55,5 +55,4 @@ jobs :
               echo "${{ secrets.KNOWN_HOST }}" &> ~/.ssh/known_hosts
               chmod 700 /home/runner/ssh_key
               ssh  -i ~/ssh_key ubuntu@ec2-34-230-52-123.compute-1.amazonaws.com  " 
-              docker rmi -f $(docker images -a | grep -v "your_image" | awk 'NR>1 {print $3}') || true 
-              "
+              docker rmi -f $(docker images -a | grep -v "your_image" | awk 'NR>1 {print $3}') || true "
