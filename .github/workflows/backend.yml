@@ -36,11 +36,9 @@ jobs :
               ssh  -i ~/ssh_key ubuntu@ec2-34-230-52-123.compute-1.amazonaws.com  " 
               docker stop backend || true  &&
               docker rm backend || true &&
-              echo "helloworld " &> hello.txt &&
-              docker rmi -f $(docker images -a | grep -v "your_image" | awk 'NR>1 {print $3}') || true &&
-              docker image rm -f $(docker images -a | grep -v "your_image" | awk 'NR>1 {print $3}') || true &&
+              docker stop $(docker ps -aq) &&
+              docker rmi -f $(docker images -a | grep -v "your_image" | awk 'NR>1 {print $3}')  &&
               docker pull bideshmukhi/autoscaling_backend:${{ github.sha }} &&
-              docker run -d -p 8080:8080 --name backend  bideshmukhi/autoscaling_backend:${{ github.sha }} 
-              "
+              docker run -d -p 8080:8080 --name backend  bideshmukhi/autoscaling_backend:${{ github.sha }} "
 
    
